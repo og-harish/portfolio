@@ -14,25 +14,31 @@ import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 import ChatBot from "./components/ChatBot";
 import HireMeModal from "./components/HireMeModal";
+import ResumeModal from "./components/ResumeModal";
 import LoadingScreen from "./components/LoadingScreen";
 import CursorGlow from "./components/CursorGlow";
 import { ThemeProvider } from "./components/ThemeContext";
 import ThemeSwitcher from "./components/ThemeSwitcher";
+import ThreeDCanvasBg from "./components/ThreeDCanvasBg";
 
 function AppContent() {
   const [isHireMeOpen, setIsHireMeOpen] = useState(false);
+  const [isResumeOpen, setIsResumeOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    if (isLoading) {
+    if (isLoading || isResumeOpen) {
       document.body.style.overflow = "hidden";
     } else {
       document.body.style.overflow = "auto";
     }
-  }, [isLoading]);
+  }, [isLoading, isResumeOpen]);
 
   const openHireMe = () => setIsHireMeOpen(true);
   const closeHireMe = () => setIsHireMeOpen(false);
+
+  const openResume = () => setIsResumeOpen(true);
+  const closeResume = () => setIsResumeOpen(false);
 
   return (
     <div className="relative">
@@ -51,8 +57,9 @@ function AppContent() {
       <CursorGlow />
       <ThemeSwitcher />
       
-      {/* Background Atmospheric Effects */}
-      <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+      {/* Background Atmospheric Effects & Interactive 3D Canvas */}
+      <ThreeDCanvasBg />
+      <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden font-sans">
          <div className="absolute top-[-10%] left-[-10%] w-[500px] h-[500px] bg-brand-purple/10 rounded-full blur-[120px]" />
          <div className="absolute bottom-[-10%] right-[-10%] w-[500px] h-[500px] bg-brand-blue/10 rounded-full blur-[120px]" />
       </div>
@@ -60,7 +67,7 @@ function AppContent() {
       <div className="relative z-10">
         <Navbar onHireMeClick={openHireMe} />
         <main>
-          <Hero onHireMeClick={openHireMe} />
+          <Hero onHireMeClick={openHireMe} onResumeClick={openResume} />
           <TrustStrip />
           <About />
           <Skills />
@@ -68,12 +75,17 @@ function AppContent() {
           <Projects />
           <AILab />
           <Services />
-          <ResumeCTA onHireMeClick={openHireMe} />
+          <ResumeCTA onHireMeClick={openHireMe} onResumeClick={openResume} />
           <Contact />
         </main>
         <Footer />
         <ChatBot />
         <HireMeModal isOpen={isHireMeOpen} onClose={closeHireMe} />
+        <AnimatePresence>
+          {isResumeOpen && (
+            <ResumeModal isOpen={isResumeOpen} onClose={closeResume} />
+          )}
+        </AnimatePresence>
       </div>
     </div>
   );

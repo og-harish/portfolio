@@ -14,6 +14,7 @@
   --color-card-border: var(--color-card-border-theme, rgba(255, 255, 255, 0.05));
   --color-text-main: var(--color-text-main-theme, #ffffff);
   --color-text-muted: var(--color-text-muted-theme, rgba(255, 255, 255, 0.75));
+  --color-text-dim: var(--color-text-dim-theme, rgba(255, 255, 255, 0.45));
 
   --animate-float: float 6s ease-in-out infinite;
   --animate-pulse-slow: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
@@ -35,6 +36,7 @@
     --color-card-border-theme: rgba(255, 255, 255, 0.05);
     --color-text-main-theme: #ffffff;
     --color-text-muted-theme: rgba(255, 255, 255, 0.75);
+    --color-text-dim-theme: rgba(255, 255, 255, 0.45);
   }
 
   .theme-cyber {
@@ -45,6 +47,7 @@
     --color-bg-dark-theme: #050505;
     --color-card-bg-theme: rgba(0, 242, 255, 0.03);
     --color-card-border-theme: rgba(0, 242, 255, 0.1);
+    --color-text-dim-theme: rgba(0, 242, 255, 0.45);
   }
 
   .theme-midnight {
@@ -55,6 +58,7 @@
     --color-bg-dark-theme: #121212;
     --color-card-bg-theme: rgba(255, 255, 255, 0.02);
     --color-card-border-theme: rgba(255, 255, 255, 0.05);
+    --color-text-dim-theme: rgba(255, 255, 255, 0.4);
   }
 
   .theme-paper {
@@ -67,6 +71,7 @@
     --color-card-border-theme: rgba(0, 0, 0, 0.05);
     --color-text-main-theme: #0f172a;
     --color-text-muted-theme: #475569;
+    --color-text-dim-theme: #64748b;
   }
 
   body {
@@ -129,3 +134,47 @@
   background-color: var(--color-brand-blue);
   opacity: 0.2;
 }
+
+/* Printable Resume Styling */
+@media print {
+  /* Hide all external page elements */
+  body {
+    background: white !important;
+    color: black !important;
+  }
+  
+  body > *:not(#printable-resume-modal-container) {
+    display: none !important;
+  }
+
+  #printable-resume-modal-container {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    background: white !important;
+    color: #111111 !important;
+    box-shadow: none !important;
+    border: none !important;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+
+  /* Force print elements to have dark text on white bg */
+  .print-text-dark {
+    color: #111111 !important;
+  }
+
+  .print-bg-white {
+    background-color: #ffffff !important;
+  }
+
+  .print-border-grey {
+    border-color: #cccccc !important;
+  }
+}
+
