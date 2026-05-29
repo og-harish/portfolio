@@ -12,7 +12,6 @@ import AILab from "./components/AILab";
 import ResumeCTA from "./components/ResumeCTA";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
-import ChatBot from "./components/ChatBot";
 import HireMeModal from "./components/HireMeModal";
 import ResumeModal from "./components/ResumeModal";
 import LoadingScreen from "./components/LoadingScreen";
@@ -79,7 +78,6 @@ function AppContent() {
           <Contact />
         </main>
         <Footer />
-        <ChatBot />
         <HireMeModal isOpen={isHireMeOpen} onClose={closeHireMe} />
         <AnimatePresence>
           {isResumeOpen && (

@@ -18,16 +18,21 @@ export default function Contact() {
     e.preventDefault();
     setIsSending(true);
 
+    const encode = (data: Record<string, string>) => {
+      return Object.keys(data)
+        .map((key) => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
+        .join("&");
+    };
+
     try {
       let success = false;
-      let isFallback = false;
 
       // 1. First, attempt to post to the Express backend (works in this preview/container)
       try {
         const response = await fetch("/api/contact", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(formData)
+          body: JSON.stringify(formData),
         });
 
         if (response.ok) {
@@ -37,19 +42,37 @@ export default function Contact() {
             console.info("Ported successfully to local container server. Mock logged.");
           }
         } else if (response.status === 404) {
-          // If 404, we're likely deployed on a client-only static hosting provider like Netlify
-          console.warn("Express backend API mock not present (404). Falling back to client-less service on Netlify...");
+          console.warn("Express backend API mock not present (404). Trying Netlify Forms / Serverless routes...");
         } else {
-          const result = await response.json().catch(() => ({}));
-          console.warn("Backend responded with error status:", result.error || response.statusText);
+          console.warn("Backend responded with error status:", response.statusText);
         }
       } catch (err) {
-        console.warn("Backend connection failed or unavailable. Falling back to serverless path...", err);
+        console.warn("Backend connection failed or unavailable. Continuing to Netlify / Serverless pathways...", err);
       }
 
-      // 2. Client-side Serverless Fallback (if backend was not found, failed, or was a 404)
+      // 2. Client-side Native Netlify Forms Submission
       if (!success) {
-        isFallback = true;
+        try {
+          // If deployed on Netlify, sending a URL-encoded payload to "/" registers standard submissions
+          const netlifyResponse = await fetch("/", {
+            method: "POST",
+            headers: { "Content-Type": "application/x-www-form-urlencoded" },
+            body: encode({ "form-name": "contact", ...formData }),
+          });
+
+          if (netlifyResponse.ok) {
+            success = true;
+            console.info("Message submitted directly via Netlify Forms.");
+          } else {
+            console.warn("Netlify Form transmission returned status:", netlifyResponse.statusText);
+          }
+        } catch (err) {
+          console.warn("Netlify Forms direct submission unsuccessful, moving to fallback...", err);
+        }
+      }
+
+      // 3. Client-side Serverless Fallback (using FormSubmit as an auxiliary conduit)
+      if (!success) {
         // Submit using formsubmit.co under AJAX path to the user's specific email address
         const responseOption = await fetch(`https://formsubmit.co/ajax/${PERSONAL_INFO.email}`, {
           method: "POST",
@@ -62,13 +85,13 @@ export default function Contact() {
             email: formData.email,
             _subject: formData.subject || `Inquiry from Portfolio: ${formData.name}`,
             message: formData.message,
-            _captcha: "false" // Bypasses immediate captchas after the first activation
+            _captcha: "false" // Bypasses immediate captchas on activated accounts
           })
         });
 
         if (responseOption.ok) {
           success = true;
-          console.info("Information posted successfully via serverless AJAX!");
+          console.info("Information posted successfully via FormSubmit serverless AJAX!");
         } else {
           const errRes = await responseOption.json().catch(() => ({}));
           throw new Error(errRes.message || "Failed to submit through backup server.");
@@ -89,7 +112,7 @@ export default function Contact() {
       const mailtoLink = `mailto:${PERSONAL_INFO.email}?subject=${encodeURIComponent(formData.subject || "Portfolio Inquiry")}&body=${encodeURIComponent(`Hi Harish,\n\nName: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`)}`;
       
       const confirmUseMailClient = window.confirm(
-        "Standard transmission is temporarily blocked by your network or browser settings.\n\nWould you like to open your local email application to send your message directly?"
+        "Standard submission was blocked or not yet activated.\n\nWould you like to open your local email application (Mail, Outlook, Gmail) to email Harish directly?"
       );
       if (confirmUseMailClient) {
         window.location.href = mailtoLink;
@@ -173,7 +196,8 @@ export default function Contact() {
                     </button>
                   </div>
                 ) : (
-                  <form className="space-y-6" onSubmit={handleSubmit}>
+                  <form className="space-y-6" onSubmit={handleSubmit} name="contact" data-netlify="true" data-netlify-honeypot="bot-field">
+                    <input type="hidden" name="form-name" value="contact" />
                     <div className="grid md:grid-cols-2 gap-6">
                       <div className="space-y-2">
                         <label className="text-xs font-bold uppercase tracking-widest text-text-muted ml-4">Name</label>
