@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
 
-type Theme = 'default' | 'cyber' | 'midnight' | 'paper';
+type Theme = 'violet' | 'carex' | 'green';
 type Layout = 'modern' | 'minimal';
 
 interface ThemeContextType {
@@ -15,7 +15,11 @@ const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
   const [theme, setTheme] = useState<Theme>(() => {
     const saved = localStorage.getItem('portfolio-theme');
-    return (saved as Theme) || 'default';
+    // Default to the new 'violet' theme if not found or if the old themes were saved
+    if (saved === 'default' || saved === 'cyber' || saved === 'midnight' || saved === 'paper') {
+      return 'violet';
+    }
+    return (saved as Theme) || 'violet';
   });
 
   const [layout, setLayout] = useState<Layout>(() => {
@@ -25,8 +29,8 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
 
   useEffect(() => {
     const root = document.documentElement;
-    root.classList.remove('theme-default', 'theme-cyber', 'theme-midnight', 'theme-paper');
-    if (theme !== 'default') {
+    root.classList.remove('theme-violet', 'theme-carex', 'theme-green');
+    if (theme !== 'violet') {
       root.classList.add(`theme-${theme}`);
     }
     localStorage.setItem('portfolio-theme', theme);

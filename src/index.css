@@ -28,50 +28,41 @@
 @layer base {
   :root {
     --font-display-theme: "Sora", sans-serif;
-    --color-brand-blue-theme: #2563eb;
-    --color-brand-purple-theme: #9333ea;
-    --color-brand-cyan-theme: #22d3ee;
-    --color-bg-dark-theme: #030303;
-    --color-card-bg-theme: rgba(255, 255, 255, 0.03);
-    --color-card-border-theme: rgba(255, 255, 255, 0.05);
+    --color-brand-blue-theme: #6366f1; /* Galactic Indigo */
+    --color-brand-purple-theme: #a855f7; /* Electric Violet */
+    --color-brand-cyan-theme: #06b6d4; /* Vivid Cyan */
+    --color-bg-dark-theme: #0a041a; /* Cosmic Space Background */
+    --color-card-bg-theme: rgba(168, 85, 247, 0.03); /* Lavender-tinted glass */
+    --color-card-border-theme: rgba(168, 85, 247, 0.08); /* Violet border hint */
     --color-text-main-theme: #ffffff;
-    --color-text-muted-theme: rgba(255, 255, 255, 0.75);
-    --color-text-dim-theme: rgba(255, 255, 255, 0.45);
+    --color-text-muted-theme: rgba(243, 232, 255, 0.8);
+    --color-text-dim-theme: rgba(243, 232, 255, 0.55);
   }
 
-  .theme-cyber {
-    --font-display-theme: "JetBrains Mono", monospace;
-    --color-brand-blue-theme: #00f2ff;
-    --color-brand-purple-theme: #bc13fe;
-    --color-brand-cyan-theme: #00f2ff;
-    --color-bg-dark-theme: #050505;
-    --color-card-bg-theme: rgba(0, 242, 255, 0.03);
-    --color-card-border-theme: rgba(0, 242, 255, 0.1);
-    --color-text-dim-theme: rgba(0, 242, 255, 0.45);
-  }
-
-  .theme-midnight {
+  .theme-carex {
     --font-display-theme: "Outfit", sans-serif;
-    --color-brand-blue-theme: #C0C0C2;
-    --color-brand-purple-theme: #D4AF37;
-    --color-brand-cyan-theme: #E5E4E2;
-    --color-bg-dark-theme: #121212;
-    --color-card-bg-theme: rgba(255, 255, 255, 0.02);
-    --color-card-border-theme: rgba(255, 255, 255, 0.05);
-    --color-text-dim-theme: rgba(255, 255, 255, 0.4);
+    --color-brand-blue-theme: #0284c7; /* Sky Blue Carex style */
+    --color-brand-purple-theme: #1e3a8a; /* Indigo Dark Blue */
+    --color-brand-cyan-theme: #0d9488; /* Teal Accent */
+    --color-bg-dark-theme: #f8fafc; /* Crisp clean slate background */
+    --color-card-bg-theme: rgba(255, 255, 255, 0.9); /* Premium white block */
+    --color-card-border-theme: rgba(15, 23, 42, 0.06); /* Soft hairline slate border */
+    --color-text-main-theme: #0f172a; /* Slate Ink */
+    --color-text-muted-theme: #334155; /* Neutral slate */
+    --color-text-dim-theme: #64748b; /* Soft gray */
   }
 
-  .theme-paper {
-    --font-display-theme: "Playfair Display", serif;
-    --color-brand-blue-theme: #1a365d;
-    --color-brand-purple-theme: #4c1d95;
-    --color-brand-cyan-theme: #0f172a;
-    --color-bg-dark-theme: #FAF9F6;
-    --color-card-bg-theme: #FFFFFF;
-    --color-card-border-theme: rgba(0, 0, 0, 0.05);
-    --color-text-main-theme: #0f172a;
-    --color-text-muted-theme: #475569;
-    --color-text-dim-theme: #64748b;
+  .theme-green {
+    --font-display-theme: "JetBrains Mono", monospace;
+    --color-brand-blue-theme: #22c55e; /* Vibrant Green */
+    --color-brand-purple-theme: #10b981; /* Emerald Green */
+    --color-brand-cyan-theme: #84cc16; /* Lime Accent */
+    --color-bg-dark-theme: #050505; /* Pitch Minimal Black */
+    --color-card-bg-theme: rgba(0, 0, 0, 0.6); /* Translucent dark obsidian */
+    --color-card-border-theme: rgba(34, 197, 94, 0.15); /* Green glow neon borders */
+    --color-text-main-theme: #ffffff;
+    --color-text-muted-theme: rgba(240, 253, 244, 0.85); /* Greenish silver */
+    --color-text-dim-theme: rgba(240, 253, 244, 0.5); /* Dim green slate */
   }
 
   body {
@@ -80,18 +71,24 @@
     transition: background-color 0.5s ease, color 0.5s ease;
   }
 
-  .theme-cyber body {
+  .theme-green body {
     background-image: 
-      linear-gradient(to right, rgba(0, 242, 255, 0.05) 1px, transparent 1px),
-      linear-gradient(to bottom, rgba(0, 242, 255, 0.05) 1px, transparent 1px);
-    background-size: 50px 50px;
+      linear-gradient(to right, rgba(34, 197, 94, 0.03) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(34, 197, 94, 0.03) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+
+  .theme-carex body {
+    background-image: 
+      radial-gradient(circle at 50% 50%, rgba(2, 132, 199, 0.03) 0%, transparent 100%),
+      radial-gradient(circle at 100% 0%, rgba(13, 148, 136, 0.02) 0%, transparent 100%);
   }
 
   h1, h2, h3, h4, h5, h6 {
     @apply font-display tracking-tight text-text-main;
   }
 
-  .theme-cyber h1, .theme-cyber h2, .theme-cyber h3 {
+  .theme-green h1, .theme-green h2, .theme-green h3 {
     @apply uppercase;
   }
 }

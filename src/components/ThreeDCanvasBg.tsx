@@ -49,45 +49,36 @@ export default function ThreeDCanvasBg() {
     // Retrieve peaceful colors matching the active theme
     const getThemeConfig = () => {
       switch (theme) {
-        case "cyber":
+        case "carex":
           return {
-            auroraColors: ["rgba(0, 242, 255, 0.08)", "rgba(188, 19, 254, 0.06)", "rgba(0, 136, 204, 0.06)"],
-            starColors: ["#00f2ff", "#bc13fe", "#0088cc"],
-            waveColor: "rgba(0, 242, 255, 0.12)",
-            waveColorAccent: "rgba(188, 19, 254, 0.08)",
-            particleCount: 70,
-            waveFrequency: 0.0012,
+            auroraColors: ["rgba(2, 132, 199, 0.03)", "rgba(30, 58, 138, 0.02)", "rgba(13, 148, 136, 0.02)"],
+            starColors: ["#0284c7", "#1e3a8a", "#0d9488"],
+            waveColor: "rgba(2, 132, 199, 0.06)",
+            waveColorAccent: "rgba(30, 58, 138, 0.04)",
+            particleCount: 25,
+            waveFrequency: 0.0006,
+            ambientLight: "#f8fafc",
+          };
+        case "green":
+          return {
+            auroraColors: ["rgba(34, 197, 94, 0.05)", "rgba(16, 185, 129, 0.04)", "rgba(132, 204, 22, 0.03)"],
+            starColors: ["#22c55e", "#10b981", "#84cc16"],
+            waveColor: "rgba(34, 197, 94, 0.12)",
+            waveColorAccent: "rgba(16, 185, 129, 0.08)",
+            particleCount: 65,
+            waveFrequency: 0.0015,
             ambientLight: "#050505",
           };
-        case "midnight":
-          return {
-            auroraColors: ["rgba(212, 175, 55, 0.06)", "rgba(192, 192, 194, 0.04)", "rgba(255, 255, 255, 0.03)"],
-            starColors: ["#D4AF37", "#f3f4f6", "#e5e7eb"],
-            waveColor: "rgba(212, 175, 55, 0.08)",
-            waveColorAccent: "rgba(255, 255, 255, 0.04)",
-            particleCount: 50,
-            waveFrequency: 0.0008,
-            ambientLight: "#121212",
-          };
-        case "paper":
-          return {
-            auroraColors: ["rgba(26, 54, 93, 0.02)", "rgba(76, 29, 149, 0.02)", "rgba(15, 23, 42, 0.01)"],
-            starColors: ["#1e293b", "#475569", "#64748b"],
-            waveColor: "rgba(15, 23, 42, 0.04)",
-            waveColorAccent: "rgba(76, 29, 149, 0.03)",
-            particleCount: 30,
-            waveFrequency: 0.0005,
-            ambientLight: "#faf8f5",
-          };
+        case "violet":
         default: // Default Space/Clean Theme
           return {
-            auroraColors: ["rgba(37, 99, 235, 0.06)", "rgba(147, 51, 234, 0.05)", "rgba(34, 211, 238, 0.05)"],
-            starColors: ["#2563eb", "#9333ea", "#22d3ee"],
-            waveColor: "rgba(37, 99, 235, 0.08)",
-            waveColorAccent: "rgba(147, 51, 234, 0.05)",
+            auroraColors: ["rgba(99, 102, 241, 0.06)", "rgba(168, 85, 247, 0.06)", "rgba(6, 182, 212, 0.04)"],
+            starColors: ["#6366f1", "#a855f7", "#06b6d4"],
+            waveColor: "rgba(168, 85, 247, 0.1)",
+            waveColorAccent: "rgba(99, 102, 241, 0.06)",
             particleCount: 60,
             waveFrequency: 0.001,
-            ambientLight: "#080810",
+            ambientLight: "#0a041a",
           };
       }
     };
@@ -209,7 +200,7 @@ export default function ThreeDCanvasBg() {
       const drawRibbon = (offsetY: number, amplitude: number, speedMultiplier: number, strokeColor: string) => {
         ctx.beginPath();
         ctx.strokeStyle = strokeColor;
-        ctx.lineWidth = theme === "paper" ? 1.0 : 1.5;
+        ctx.lineWidth = theme === "carex" ? 1.0 : 1.5;
 
         for (let x = 0; x <= width; x += 15) {
           // Calculate three-dimensional waving motion
@@ -275,7 +266,7 @@ export default function ThreeDCanvasBg() {
         ctx.fill();
 
         // Subtle particle glow
-        if (theme !== "paper" && renderedSize > 1.2) {
+        if (theme !== "carex" && renderedSize > 1.2) {
           ctx.beginPath();
           ctx.arc(p.x, p.y, renderedSize * 2.5, 0, Math.PI * 2);
           ctx.fillStyle = p.color;

@@ -3,7 +3,7 @@ import { Palette, Terminal, Moon, Sun, Layout as LayoutIcon, Zap } from "lucide-
 import { useState } from "react";
 import { useTheme } from "./ThemeContext";
 
-type Theme = 'default' | 'cyber' | 'midnight' | 'paper';
+type Theme = 'violet' | 'carex' | 'green';
 type Layout = 'modern' | 'minimal';
 
 export default function ThemeSwitcher() {
@@ -11,10 +11,9 @@ export default function ThemeSwitcher() {
   const [isOpen, setIsOpen] = useState(false);
 
   const themes: { id: Theme; name: string; icon: any; color: string }[] = [
-    { id: 'default', name: 'Starting', icon: Moon, color: '#2563eb' },
-    { id: 'cyber', name: 'Cyber Nexus', icon: Terminal, color: '#00f2ff' },
-    { id: 'midnight', name: 'Midnight', icon: Palette, color: '#D4AF37' },
-    { id: 'paper', name: 'Paper', icon: Sun, color: '#1a365d' },
+    { id: 'violet', name: 'Galactic Violet', icon: Moon, color: '#a855f7' },
+    { id: 'carex', name: 'Carex Sky', icon: Sun, color: '#0284c7' },
+    { id: 'green', name: 'Green Volt', icon: Zap, color: '#22c55e' },
   ];
 
   const layouts: { id: Layout; name: string; icon: any }[] = [
