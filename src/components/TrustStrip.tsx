@@ -19,14 +19,14 @@ export default function TrustStrip() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: i * 0.1 }}
-            className="flex items-center gap-4 bg-white/5 border border-white/10 rounded-3xl p-5 hover:bg-white/10 transition-colors"
+            className="flex items-center gap-4 bg-card-bg border border-card-border rounded-3xl p-5 transition-all outline outline-transparent hover:outline-brand-blue/30"
           >
-            <div className="w-12 h-12 rounded-full bg-blue-500/20 flex items-center justify-center text-blue-400 font-bold shrink-0">
+            <div className="w-12 h-12 rounded-full bg-brand-blue/15 flex items-center justify-center text-brand-blue font-bold shrink-0">
                <stat.icon className="w-6 h-6" />
             </div>
             <div>
-              <p className="text-[10px] text-gray-500 uppercase font-bold tracking-wider leading-none mb-1">{stat.label}</p>
-              <p className="text-sm font-semibold text-white leading-tight">{stat.value}</p>
+              <p className="text-[10px] text-text-dim uppercase font-bold tracking-wider leading-none mb-1">{stat.label}</p>
+              <p className="text-sm font-semibold text-text-main leading-tight">{stat.value}</p>
             </div>
           </motion.div>
         ))}

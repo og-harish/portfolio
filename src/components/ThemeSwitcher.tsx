@@ -42,7 +42,7 @@ export default function ThemeSwitcher() {
                     className={`flex items-center gap-3 px-3 py-2 rounded-xl transition-all duration-200 ${
                       theme === t.id 
                         ? 'bg-brand-blue/20 text-brand-blue border border-brand-blue/20' 
-                        : 'hover:bg-white/5 text-text-muted hover:text-text-main border border-transparent'
+                        : 'hover:bg-card-bg text-text-muted hover:text-text-main border border-transparent hover:border-card-border'
                     }`}
                   >
                     <t.icon size={16} />
@@ -63,7 +63,7 @@ export default function ThemeSwitcher() {
                     className={`flex items-center gap-3 px-3 py-2 rounded-xl transition-all duration-200 ${
                       layout === l.id 
                         ? 'bg-brand-purple/20 text-brand-purple border border-brand-purple/20' 
-                        : 'hover:bg-white/5 text-text-muted hover:text-text-main border border-transparent'
+                        : 'hover:bg-card-bg text-text-muted hover:text-text-main border border-transparent hover:border-card-border'
                     }`}
                   >
                     <l.icon size={16} />

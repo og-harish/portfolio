@@ -18,8 +18,8 @@ export default function Services() {
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-16">
           <div className="text-brand-purple font-bold tracking-widest uppercase text-sm mb-4">Value Proposition</div>
-          <h2 className="text-4xl lg:text-6xl font-bold tracking-tighter">
-            What I <span className="text-white/40">Excel At</span>
+          <h2 className="text-4xl lg:text-6xl font-bold tracking-tighter text-text-main">
+            What I <span className="text-text-dim">Excel At</span>
           </h2>
         </div>
 
@@ -39,8 +39,8 @@ export default function Services() {
                   <div className="w-14 h-14 rounded-2xl bg-brand-purple/10 border border-brand-purple/20 flex items-center justify-center text-brand-purple mb-8 group-hover:scale-110 group-hover:bg-brand-purple group-hover:text-white transition-all">
                     <Icon className="w-7 h-7" />
                   </div>
-                  <h3 className="text-2xl font-bold mb-4 tracking-tight">{service.title}</h3>
-                  <p className="text-white/40 leading-relaxed text-sm">
+                  <h3 className="text-2xl font-bold mb-4 tracking-tight text-text-main">{service.title}</h3>
+                  <p className="text-text-muted leading-relaxed text-sm">
                     {service.description}
                   </p>
                 </ThreeDCard>

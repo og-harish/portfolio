@@ -1,5 +1,5 @@
 import { motion } from "motion/react";
-import { Sparkles, Brain, Bot, Rocket } from "lucide-react";
+import { Brain, Rocket } from "lucide-react";
 import ThreeDCard from "./ThreeDCard";
 
 const STUDIOS = [
@@ -11,21 +11,21 @@ const STUDIOS = [
 
 export default function AILab() {
   return (
-    <section className="py-24 relative overflow-hidden">
+    <section className="py-24 relative overflow-hidden bg-white/[0.01]">
       <div className="max-w-7xl mx-auto px-6">
         <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-8 font-sans">
           <div>
             <div className="text-brand-cyan font-bold tracking-widest uppercase text-sm mb-4">Innovation Lab</div>
-            <h2 className="text-4xl lg:text-6xl font-bold tracking-tighter">
-              AI <span className="text-white/40">Toolkits & Agents</span>
+            <h2 className="text-4xl lg:text-6xl font-bold tracking-tighter text-text-main">
+              AI <span className="text-text-dim">Toolkits & Agents</span>
             </h2>
           </div>
-          <div className="bg-white/5 border border-white/10 rounded-2xl p-4 flex items-center gap-3 glass">
+          <div className="bg-card-bg border border-card-border rounded-2xl p-4 flex items-center gap-3 glass">
              <div className="relative">
                 <div className="w-3 h-3 rounded-full bg-green-500 animate-pulse" />
                 <div className="absolute inset-0 w-3 h-3 rounded-full bg-green-500 animate-ping opacity-20" />
              </div>
-             <span className="text-xs font-mono text-gray-400 italic">ML Prototype Lab: Active Development Phase</span>
+             <span className="text-xs font-mono text-text-muted italic">ML Prototype Lab: Active Development Phase</span>
           </div>
         </div>
 
@@ -37,7 +37,7 @@ export default function AILab() {
              viewport={{ once: true }}
              className="h-full"
            >
-             <ThreeDCard className="glass rounded-[2.5rem] p-10 group relative bg-gradient-to-br from-blue-600/10 to-transparent border border-white/10 overflow-hidden h-full">
+             <ThreeDCard className="glass rounded-[2.5rem] p-10 group relative bg-gradient-to-br from-brand-blue/10 to-transparent border border-card-border overflow-hidden h-full">
                <a 
                  href="https://sales-prediction-nlp-mxvtjjzuecftcn6q6po2om.streamlit.app/insights"
                  target="_blank"
@@ -49,19 +49,19 @@ export default function AILab() {
                     <Brain className="w-24 h-24" />
                  </div>
                  <div className="flex items-center gap-4 mb-6">
-                    <div className="p-3 bg-blue-500/20 rounded-2xl text-blue-400">
+                    <div className="p-3 bg-brand-blue/20 rounded-2xl text-brand-blue">
                        <Brain className="w-6 h-6" />
                     </div>
-                    <span className="text-xs font-bold uppercase tracking-widest text-blue-400">Sales Analytics Model (Streamlit)</span>
+                    <span className="text-xs font-bold uppercase tracking-widest text-brand-blue">Sales Analytics Model (Streamlit)</span>
                  </div>
-                 <h3 className="text-3xl font-bold mb-4 tracking-tight">Sales Prediction & NLP Dashboard</h3>
-                 <p className="text-gray-400 text-sm leading-relaxed mb-6 font-sans">
+                 <h3 className="text-3xl font-bold mb-4 tracking-tight text-text-main">Sales Prediction & NLP Dashboard</h3>
+                 <p className="text-text-muted text-sm leading-relaxed mb-6 font-sans">
                     An AI analytics dashboard forecasting commercial volume with XGBoost & LSTM, and generating automated summaries from text reviews.
                  </p>
-                 <div className="flex gap-3">
-                    <span className="text-[10px] font-bold px-3 py-1 bg-white/5 rounded-full border border-white/10">Streamlit</span>
-                    <span className="text-[10px] font-bold px-3 py-1 bg-white/5 rounded-full border border-white/10">NLP Pipeline</span>
-                    <span className="text-[10px] font-bold px-3 py-1 bg-white/5 rounded-full border border-white/10">Machine Learning</span>
+                 <div className="flex gap-3 flex-wrap">
+                    <span className="text-[10px] font-bold px-3 py-1 bg-card-bg rounded-full border border-card-border text-text-muted">Streamlit</span>
+                    <span className="text-[10px] font-bold px-3 py-1 bg-card-bg rounded-full border border-card-border text-text-muted">NLP Pipeline</span>
+                    <span className="text-[10px] font-bold px-3 py-1 bg-card-bg rounded-full border border-card-border text-text-muted">Machine Learning</span>
                  </div>
                </a>
              </ThreeDCard>
@@ -74,7 +74,7 @@ export default function AILab() {
              viewport={{ once: true }}
              className="h-full"
            >
-             <ThreeDCard className="glass rounded-[2.5rem] p-10 group relative bg-gradient-to-br from-purple-600/10 to-transparent border border-white/10 overflow-hidden h-full">
+             <ThreeDCard className="glass rounded-[2.5rem] p-10 group relative bg-gradient-to-br from-brand-purple/10 to-transparent border border-card-border overflow-hidden h-full">
                <a 
                  href="https://job-ready-roadmap.lovable.app/?utm_source=chatgpt.com"
                  target="_blank"
@@ -86,19 +86,19 @@ export default function AILab() {
                     <Rocket className="w-24 h-24" />
                  </div>
                  <div className="flex items-center gap-4 mb-6">
-                    <div className="p-3 bg-purple-500/20 rounded-2xl text-purple-400">
+                    <div className="p-3 bg-brand-purple/20 rounded-2xl text-brand-purple">
                        <Rocket className="w-6 h-6" />
                     </div>
-                    <span className="text-xs font-bold uppercase tracking-widest text-purple-400">Career GPS Guidance (Lovable)</span>
+                    <span className="text-xs font-bold uppercase tracking-widest text-brand-purple">Career GPS Guidance (Lovable)</span>
                  </div>
-                 <h3 className="text-3xl font-bold mb-4 tracking-tight">AI Roadmap & Gap Detector</h3>
-                 <p className="text-gray-400 text-sm leading-relaxed mb-6 font-sans">
+                 <h3 className="text-3xl font-bold mb-4 tracking-tight text-text-main">AI Roadmap & Gap Detector</h3>
+                 <p className="text-text-muted text-sm leading-relaxed mb-6 font-sans">
                     An LLM-driven portal generating custom technical roadmaps, parsers, and progress tracking indicators. Winner of 2nd Place at Hackathon.
                  </p>
-                 <div className="flex gap-3">
-                    <span className="text-[10px] font-bold px-3 py-1 bg-white/5 rounded-full border border-white/10">React.js</span>
-                    <span className="text-[10px] font-bold px-3 py-1 bg-white/5 rounded-full border border-white/10">LLM APIs</span>
-                    <span className="text-[10px] font-bold px-3 py-1 bg-white/5 rounded-full border border-white/10">Hackathon Winner</span>
+                 <div className="flex gap-3 flex-wrap">
+                    <span className="text-[10px] font-bold px-3 py-1 bg-card-bg rounded-full border border-card-border text-text-muted">React.js</span>
+                    <span className="text-[10px] font-bold px-3 py-1 bg-card-bg rounded-full border border-card-border text-text-muted">LLM APIs</span>
+                    <span className="text-[10px] font-bold px-3 py-1 bg-card-bg rounded-full border border-card-border text-text-muted">Hackathon Winner</span>
                  </div>
                </a>
              </ThreeDCard>
@@ -106,8 +106,8 @@ export default function AILab() {
         </div>
 
         {/* AI Studios Strip */}
-        <div className="py-12 border-t border-white/5">
-          <p className="text-center text-[10px] uppercase tracking-[0.4em] font-bold text-gray-500 mb-10">Powering workflows with elite AI ecosystems</p>
+        <div className="py-12 border-t border-card-border">
+          <p className="text-center text-[10px] uppercase tracking-[0.4em] font-bold text-text-dim mb-10">Powering workflows with elite AI ecosystems</p>
           <div className="flex flex-wrap justify-center items-center gap-10 md:gap-20 grayscale opacity-40 hover:grayscale-0 hover:opacity-100 transition-all duration-700 font-sans">
              {STUDIOS.map(studio => (
                <a 
@@ -118,12 +118,12 @@ export default function AILab() {
                  aria-label={`Visit ${studio.name}`}
                  className="flex items-center gap-3 group cursor-pointer"
                >
-                  <div className="w-8 h-8 rounded-lg overflow-hidden flex items-center justify-center bg-white/5 border border-white/10 group-hover:border-blue-500/50 transition-colors">
+                  <div className="w-8 h-8 rounded-lg overflow-hidden flex items-center justify-center bg-card-bg border border-card-border group-hover:border-brand-blue/50 transition-colors">
                     {studio.icon.startsWith('http') ? (
                       <img src={studio.icon} alt={studio.name} className="w-5 h-5 object-contain" referrerPolicy="no-referrer" />
                     ) : studio.icon}
                   </div>
-                  <span className="text-xs font-bold tracking-tight text-white group-hover:text-brand-blue transition-colors">{studio.name}</span>
+                  <span className="text-xs font-bold tracking-tight text-text-main group-hover:text-brand-blue transition-colors">{studio.name}</span>
                </a>
              ))}
           </div>

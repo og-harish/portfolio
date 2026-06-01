@@ -7,33 +7,46 @@ import {
   Brackets, Binary, ShieldCheck, Zap, Search, Users, 
   Sparkles, Bot, Brain, Cloud, Rocket, Heart,
   Coffee, FileCode, Video, PenTool, Star, Blocks,
-  Layers, MonitorSmartphone
+  Layers, MonitorSmartphone, Atom, TrendingUp, BarChart2, Lightbulb
 } from "lucide-react";
 
 const ICON_MAP: Record<string, any> = {
-  "HTML": FileCode,
-  "CSS": Layers,
+  // Frontend
+  "React.js": Atom,
+  "HTML5": FileCode,
+  "CSS3": Layers,
   "Responsive WebDesign": Smartphone,
   "Cross-device Compatibility": MonitorSmartphone,
-  "Java (Basics)": Coffee,
-  "Python (Basics)": Blocks,
-  "MySQL": Database,
-  "Git/Github": Github,
-  "Visual Studio code": Code2,
+
+  // Backend
+  "Python": Blocks,
+  "Java": Coffee,
+  "SQL": Database,
+  "REST APIs": Globe,
+
+  // Tools & Systems
+  "Git/GitHub": Github,
+  "VS Code": Code2,
   "Netlify": Cloud,
+  "Google Cloud Run": Cpu,
   "Linux": Terminal,
-  "Antigravity": Zap,
-  "WPS": FileCode,
-  "Google AI Studio": Sparkles,
-  "Claude AI": Bot,
-  "Z AI": Brain,
-  "Lovable": Heart,
-  "Gemini": Star,
+
+  // AI & ML Stack
+  "Scikit-learn": BrainCircuit,
+  "Pandas": Binary,
+  "NumPy": Brackets,
+  "NLP": Bot,
+  "Predictive Analytics": TrendingUp,
+  "EDA": Search,
+  "Power BI": BarChart2,
+
+  // Creative Suite
   "Canva": PenTool,
-  "Gamma AI": Zap,
   "Adobe Premiere Pro": Video,
+
+  // Core Strengths
   "Debugging": ShieldCheck,
-  "Problem Solving": Search,
+  "Problem Solving": Lightbulb,
   "Teamwork": Users,
   "Fast Learner": Rocket
 };
